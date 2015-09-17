@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <title></title>
+  <link rel="stylesheet" href="node_modules/mocha/mocha.css">
+</head>
+<body>
+
+<div id='mocha'></div>
+<script src='node_modules/chai/chai.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mocha2.3.2/mocha.min.js'></script>
+
+<script>mocha.setup('bdd');</script>
+
+<script src='js/shopping-list-test.js'></script>
+
+<script>mocha.run();</script>
+
+</body>
+</html>
