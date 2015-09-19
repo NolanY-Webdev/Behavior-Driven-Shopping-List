@@ -20,3 +20,8 @@ function changeCheckedStatus(idx, checkbox) {
     console.log('you dun goofed');
   }
 }
+
+function removeItemButtonClicked(idx) {
+  ShoppingList.removeItem(ShoppingList.items[idx]);
+  rending();
+}
