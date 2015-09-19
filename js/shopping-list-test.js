@@ -95,6 +95,11 @@ describe('ShoppingList', function() {
   });
 
   describe('render', function() {
+    beforeEach(function() {
+      list.items = [];
+      list.addItem(shit);
+      list.addItem(pocky);
+    });
     it('will do things', function() {
       expect(list.render()).to.be.a('string');
     });

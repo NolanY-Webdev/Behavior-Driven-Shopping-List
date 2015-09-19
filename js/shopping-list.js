@@ -24,8 +24,7 @@ ShoppingList.prototype.removeItem = function(item) {
 ShoppingList.prototype.render = function() {
   var li = '';
   for (var i = 0; i < this.items.length; i++) {
-    li += this.items[i].render;
+    li += this.items[i].render() + '<input type="checkbox" onchange="changeCheckedStatus(' + i + ', ' + document.getElementById('checkbox') + ')"> ';
   }
-  console.log('<ul>' + li + '</ul>');
   return '<ul>' + li + '</ul>';
 };
