@@ -53,6 +53,8 @@ describe('ShoppingListItem', function() {
 describe('ShoppingList', function() {
   var list = new ShoppingList();
   var pocky = new ShoppingListItem('pocky', 'buy more');
+  var shit = new ShoppingListItem('shit', 'the manure/fertilizer type of course');
+  var Anna = new ShoppingListItem('Birthday present?', 'nope her birthday passed');
   it('should be a function', function() {
     expect(ShoppingList).to.be.a('function');
   });
@@ -67,38 +69,34 @@ describe('ShoppingList', function() {
       expect(list.items.length).to.equal(1);
     });
     it('will not accept things that are not items', function() {
-      var giraffe = 'animal';
-      expect(list.addItem(giraffe)).to.throw('Not a shopping list item');
+      expect(list.addItem).to.throw('Not a valid item');
     });
   });
 
   describe('remove item', function() {
     beforeEach(function () {
-      var shit = new ShoppingListItem('shit', 'the manure/fertilizer type of course');
-      var Anna = new ShoppingListItem('Birthday present?', 'nope her birthday passed');
+      list.items = [];
       list.addItem(shit);
       list.addItem(pocky);
     });
     it('removes shit if shit is there to be removed', function() {
       list.removeItem(shit);
-      expect(list.items).to.deep.equal(pocky);
+      expect(list.items).to.deep.equal([pocky]);
     });
     it('will remove the last shit added if no argument is passed', function() {
       list.removeItem();
-      expect(list.items).to.deep.equal(shit);
-    });
-    it('will not remove anything if the item to be removed is not present', function() {
-      list.removeItem(Anna);
-      expect(list.items.length).to.equal(2);
+      expect(list.items).to.deep.equal([shit]);
     });
     it('will throw an error if argument is not a ShoppingListItem', function() {
-      expect(list.removeItem(notItem)).to.throw(error);
+      expect(function() {
+        list.removeItem(Anna);
+      }).to.throw('Item not on the list');
     });
   });
 
   describe('render', function() {
     it('will do things', function() {
-      expect(list.render()).typeof('string');
+      expect(list.render()).to.be.a('string');
     });
   });
 });
